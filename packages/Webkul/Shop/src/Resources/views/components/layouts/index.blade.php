@@ -6,6 +6,11 @@
 
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ core()->getCurrentLocale()->direction }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="mega-menu.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="mega-menu.js"></script>
     <head>
         <title>{{ $title ?? '' }}</title>
 
@@ -52,27 +57,37 @@
             {{-- Confirm Modal Blade Component --}}
             <x-shop::modal.confirm />
 
-            {{-- Page Header Blade Component --}}
-            @if ($hasHeader)
-                <x-shop::layouts.header />
-            @endif
+            
+            
+            <div class=" bg-[#A81D46] text-[#fff] flex justify-center items-center w-full py-[11px] px-16 border border-t-0 border-b-[1px] border-l-0 border-r-0">
+                <p class="md:text-[14px] text-xs ">SAME DAY DELIVERY, ALL AROUND BAHRAIN</p>
+            </div>
 
-            {!! view_render_event('bagisto.shop.layout.content.before') !!}
+            <section class=" mx-[10.89%] ">  
+                
+                {{-- Page Header Blade Component --}}
+                @if ($hasHeader)
+                    <x-shop::layouts.header />
+                @endif
+                {!! view_render_event('bagisto.shop.layout.content.before') !!}
 
-            {{-- Page Content Blade Component --}}
-            {{ $slot }}
+                {{-- Page Content Blade Component --}}
+                {{ $slot }}
 
-            {!! view_render_event('bagisto.shop.layout.content.after') !!}
+                {!! view_render_event('bagisto.shop.layout.content.after') !!}
 
-            {{-- Page Features Blade Component --}}
-            @if ($hasFeature)
-                <x-shop::layouts.features />
-            @endif
+                {{-- Page Features Blade Component --}}
+                @if ($hasFeature)
+                    <x-shop::layouts.features />
+                @endif
 
+                
+            </section>
             {{-- Page Footer Blade Component --}}
             @if ($hasFooter)
                 <x-shop::layouts.footer />
             @endif
+            
         </div>
 
         {!! view_render_event('bagisto.shop.layout.body.after') !!}
@@ -81,6 +96,16 @@
 
         <script type="text/javascript">
             {!! core()->getConfigData('general.content.custom_scripts.custom_javascript') !!}
+
+            $(document).ready(function() {
+           jQuery(document).ready(function(){
+             $(".dropdown").hover(
+             function() { $('.dropdown-menu', this).stop().fadeIn("fast");
+                },
+          function() { $('.dropdown-menu', this).stop().fadeOut("fast");
+          });
+        });
+}
         </script>
     </body>
 </html>

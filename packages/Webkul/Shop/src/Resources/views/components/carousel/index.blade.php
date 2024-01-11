@@ -10,33 +10,53 @@
         <div class="w-full relative m-auto">
             <a
                 v-for="(image, index) in images"
-                class="fade"
+                class=""
                 :href="image.link || '#'"
                 ref="slides"
                 :key="index"
                 aria-label="Image Slide "
             >
+            <div class="flex flex-col sm:flex-row w-[100%] bg-[#FCE4DE] sm:pr-20" style="height:100% !important">
+            <div class="sm:w-[50%] w-[100%] flex flex-col justify-center  pr-20 sm:pl-28 pl-10 gap-10 my-20 ">
+                <div>
+                <h1 class="text-[21px]">100% Genuine Brands</h1>
+                <h1 class="text-[40px] pr-40 font-medium">Powermatte Lip Pigment</h1>
+                </div>
+               
+                <p class="text-[14px]">The soft, lightweight, non-drying texture of Powermatte Lip Pigment offers a velvety matte finish with unbeatable comfort.</p>
+                <button class="h-[54px] w-[147px] border-2 border-black font-medium text-black">Shop Now</button>
+            </div>
                 <x-shop::media.images.lazy
-                    class="w-full aspect-[2.743/1]"
+                    class="sm:w-[50%] w-[100%] aspect-[2.743/1]"
                     ::src="image.image"
                     ::srcset="image.image + ' 1920w, ' + image.image.replace('storage', 'cache/large') + ' 1280w,' + image.image.replace('storage', 'cache/medium') + ' 1024w, ' + image.image.replace('storage', 'cache/small') + ' 525w'"
                     alt=""
                 ></x-shop::media.images.lazy>
+                </div>
             </a>
+           <div class="flex gap-3 py-6 justify-center">
 
-            <span
-                class="icon-arrow-left text-[24px] font-bold text-white w-auto -mt-[22px] p-[12px] absolute top-1/2 left-[10px] bg-[rgba(0,0,0,0.8)] transition-all opacity-30 rounded-full hover:opacity-100 cursor-pointer"
+           
+            <div
+                class=" text-[24px] font-bold text-white  w-[79px] h-[3px]  bg-[rgba(0,0,0,0.8)] transition-all   hover:bg-[#FFA68B] cursor-pointer"
                 v-if="images?.length >= 2"
                 @click="navigate(currentIndex -= 1)"
             >
-            </span>
+            </div>
 
-            <span
-                class="icon-arrow-right text-[24px] font-bold text-white w-auto -mt-[22px] p-[12px] absolute top-1/2 right-[10px] bg-[rgba(0,0,0,0.8)] transition-all opacity-30 rounded-full hover:opacity-100 cursor-pointer"
+            <div
+                class=" text-[24px] font-bold text-white w-[79px] h-[3px]    bg-[rgba(0,0,0,0.8)] transition-all  hover:bg-[#FFA68B] cursor-pointer"
                 v-if="images?.length >= 2"
                 @click="navigate(currentIndex += 1)"
             >
-            </span>
+            </div>
+            <div
+                class=" text-[24px] font-bold text-white w-[79px] h-[3px]    bg-[rgba(0,0,0,0.8)] transition-all  hover:bg-[#FFA68B] cursor-pointer"
+                v-if="images?.length >= 2"
+                @click="navigate(currentIndex += 1)"
+            >
+            </div>
+            </div>
         </div>
     </script>
 

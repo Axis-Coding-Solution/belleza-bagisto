@@ -47,7 +47,7 @@ return new class extends Migration
                 'locale'                 => 'en',
                 'options'                => json_encode([
                     'html' => '<div class="home-offer"><span>Get UPTO 40% OFF on your 1st order SHOP NOW</span></div>',
-                    'css'  => '.home-offer span {display: block;font-weight: 500;text-align: center;font-size: 22px;font-family: DM Serif Display;background-color: #E8EDFE;padding-top: 20px;padding-bottom: 20px;}@media (max-width:768px){.home-offer span {font-size:18px;}@media (max-width:525px) {.home-offer span {font-size:14px;}}'
+                    'css'  => '.home-offer span {display: none;font-weight: 500;text-align: center;font-size: 22px;font-family: DM Serif Display;background-color: #E8EDFE;padding-top: 20px;padding-bottom: 20px;}@media (max-width:768px){.home-offer span {font-size:18px;}@media (max-width:525px) {.home-offer span {font-size:14px;}}'
                 ]),
             ], [
                 'theme_customization_id' => 3,

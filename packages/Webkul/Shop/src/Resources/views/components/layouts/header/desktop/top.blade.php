@@ -1,5 +1,5 @@
 
-<div class=" bg-[#A81D46] text-[#fff] flex justify-between items-center w-full py-[11px] px-16 border border-t-0 border-b-[1px] border-l-0 border-r-0">
+<div class="hidden bg-[#A81D46] text-[#fff]  justify-between items-center w-full py-[11px] px-16 border border-t-0 border-b-[1px] border-l-0 border-r-0">
     {{-- Currency Switcher --}}
     <x-shop::dropdown>
         <!-- Dropdown Toggler -->
@@ -51,6 +51,9 @@
         </x-slot:content>
     </x-shop::dropdown>
 </div>
+
+
+
 
 @pushOnce('scripts')
     <script type="text/x-template" id="v-currency-switcher-template">
@@ -126,4 +129,5 @@
             }
         });
     </script>
+   
 @endPushOnce

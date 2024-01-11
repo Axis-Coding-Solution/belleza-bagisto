@@ -46,6 +46,16 @@ export default {
                     currency: currencyCode,
                 }).format(price);
             },
+
+            toggleDropdown: () => {
+                debugger;
+                var dropdown = document.getElementById("mega-menu-dropdown");
+                if (dropdown.style.display === "none") {
+                    dropdown.style.display = "block";
+                } else {
+                    dropdown.style.display = "none";
+                }
+            }
         };
     },
 };

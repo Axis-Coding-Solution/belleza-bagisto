@@ -14,18 +14,18 @@
     <script type="text/x-template" id="v-quantity-changer-template">
         <div>
             <span 
-                class="icon-minus text-[24px] cursor-pointer" 
+                class="icon-minus text-[20px] cursor-pointer " 
                 @click="decrease"
             >
             </span>
 
             <p
-                class="w-[10px] text-center select-none"
+                class="w-[10px] text-center select-none border py-[8px] px-5 border-[black]"
                 v-text="quantity"
             ></p>
             
             <span 
-                class="icon-plus text-[24px] cursor-pointer"
+                class="icon-plus text-[20px] cursor-pointer"
                 @click="increase"
             >
             </span>

@@ -30,18 +30,6 @@
 
                 @break
 
-            @case ($customization::STATIC_CONTENT)
-                {{-- push style --}}
-                @push ('styles')
-                    <style>
-                        {{ $data['css'] }}
-                    </style>
-                @endpush
-
-                {{-- render html --}}
-                {!! $data['html'] !!}
-
-                @break
 
             @case ($customization::CATEGORY_CAROUSEL)
                 {{-- Categories carousel --}}

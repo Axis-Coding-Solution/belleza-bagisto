@@ -11,12 +11,12 @@
             class='grid gap-2.5 content-start w-full relative'
             v-if="mode != 'list'"
         >
-            <div class="relative overflow-hidden group max-w-[291px] max-h-[300px] rounded-[4px]">
-                <a
+            <div class="relative overflow-hidden group  max-w-[217px] w-[217px] max-h-[308px] h-[308px] rounded-[4px]">
+                {{-- <a
                     :href="`{{ route('shop.product_or_category.index', '') }}/${product.url_key}`"
                     :aria-label="product.name + ' '"
                 >
-                    <x-shop::media.images.lazy
+                     <x-shop::media.images.lazy
                         class="relative after:content-[' '] after:block after:pb-[calc(100%+9px)] bg-[#F5F5F5] group-hover:scale-105 transition-all duration-300"
                         ::src="product.base_image.medium_image_url"
                         ::key="product.id"
@@ -24,60 +24,92 @@
                         width="291"
                         height="300"
                         ::alt="product.name"
-                    ></x-shop::media.images.lazy>
+                    ></x-shop::media.images.lazy> 
+
+                    
+                </a> --}}
+                <a :href="`{{ route('shop.product_or_category.index', '') }}/${product.url_key}`"
+                   :aria-label="product.name + ' '">
+                    <div class="max-w-[217px] w-[217px] max-h-[308px] h-[308px] bg-[#FFF5F2] flex justify-center items-center relative px-2">
+                        <img class="h-full object-contain" :src="product.base_image.original_image_url" ::key="product.id"
+                        :index="product.id" alt="">
+                    </div>
+                    {{-- <div class="px-2 py-4 shadow-lg">
+                        <h6 class="uppercase text-[#A81D46] text-sm font-medium">VOGUE</h6>
+                        <h4 class="text-black text-sm font-medium md:py-3 py-1">Originals Kaval Windbreaker
+                            Winter
+                            Jacket</h4>
+                        <div class="flex items-center gap-3 text-[#707070]  text-sm md:pb-4 pb-2">
+                            <span class="font-medium">90 BHD </span>
+                            <span class="font-normal text-xs line-through">100 BHD </span>
+                        </div>
+                        <div>
+                        <a :href="`{{ route('shop.product_or_category.index', '') }}/${product.url_key}`"
+                   :aria-label="product.name + ' '"><button class="cart-btn" @click="addToCart()">Add To Cart</button></a>
+                        </div>
+                    </div> --}}
                 </a>
                 
                 <div class="action-items bg-black">
                     <p
-                        class="inline-block absolute top-[20px] left-[20px] px-[10px]  bg-[#E51A1A] rounded-[44px] text-white text-[14px]"
-                        v-if="product.on_sale"
-                    >
-                        @lang('shop::app.components.products.card.sale')
-                    </p>
-
-                    <p
-                        class="inline-block absolute top-[20px] left-[20px] px-[10px] bg-navyBlue rounded-[44px] text-white text-[14px]"
+                        class=" absolute top-[10px] right-[10px] px-[10px] flex items-center justify-center w-[50px] h-[50px]  bg-[#000001] rounded-[44px] text-white text-[14px]"
                         v-else-if="product.is_new"
                     >
                         @lang('shop::app.components.products.card.new')
                     </p>
 
-                    <div class="group-hover:bottom-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    <p
+                        class="absolute top-[10px] left-[20px]  px-[10px] flex items-center justify-center w-[50px] h-[50px]  bg-[#A81D46] rounded-[44px] text-white text-[14px]"
+                        v-if="product.on_sale"
+                    >
+                        @lang('shop::app.components.products.card.sale')
+                    </p>
+
+                    
+
+                    <div class="opacity-100">
                         @if (core()->getConfigData('general.content.shop.wishlist_option'))
                             <span
-                                class="flex justify-center items-center absolute top-[20px] right-[20px] w-[30px] h-[30px] bg-white rounded-md cursor-pointer text-[25px]"
-                                :class="product.is_wishlist ? 'icon-heart-fill' : 'icon-heart'"
+                                class="flex justify-center items-center absolute bottom-[20px] right-[20px] w-[30px] h-[30px]  rounded-md cursor-pointer text-[25px]"
+                                :class="product.is_wishlist ? 'icon-heart-fill  text-[#A81D46]' : 'icon-heart text-[#A6A6A6]'"
                                 @click="addToWishlist()"
                             >
                             </span>
                         @endif
 
-                        @if (core()->getConfigData('general.content.shop.compare_option'))
+                        {{-- @if (core()->getConfigData('general.content.shop.compare_option'))
                             <span
                                 class="icon-compare flex justify-center items-center w-[30px] h-[30px] absolute top-[60px] right-[20px] bg-white rounded-md cursor-pointer text-[25px]"
                                 @click="addToCompare(product.id)"
                             >
                             </span>
-                        @endif
+                        @endif --}}
 
-                        <button
+                        <!-- <button
                             class="absolute bottom-[15px] left-[50%] py-[11px] px-[43px] bg-white rounded-xl text-navyBlue text-xs w-max font-medium cursor-pointer -translate-x-[50%] translate-y-[54px] group-hover:translate-y-0 transition-all duration-300"
                             @click="addToCart()"
                         >
                             @lang('shop::app.components.products.card.add-to-cart')
-                        </button>
+                        </button> -->
                     </div>
                 </div>
             </div>
 
-            <div class="grid gap-2.5 content-start max-w-[291px]">
-                <p class="text-base" v-text="product.name"></p>
+            <div class="grid gap-2.5 content-start max-w-[217px]">
+            <div class="">
+                  
+                  <p>VAGUE</p>
+              </div>
+                <p class=" text-[#A81D46] text-[14px]" v-text="product.name"></p>
 
                 <div
-                    class="flex gap-2.5 font-semibold text-lg"
+                    class="flex gap-2.5 font-semibold text-[14px]"
                     v-html="product.price_html"
                 >
                 </div>
+                
+                <a :href="`{{ route('shop.product_or_category.index', '') }}/${product.url_key}`"
+                   :aria-label="product.name + ' '"><button class="w-full border-2 mt-2 border-black h-[44px] hover:text-white hover:border-0 hover:bg-[#A81D46] bg-[#FCE4DE] text-black" @click="addToCart()">Add to Cart</button></a>
 
                 <!-- Needs to implement that in future -->
                 <div class="hidden flex gap-4 mt-[8px]">
@@ -173,12 +205,12 @@
                     </x-shop::products.star-rating>
                 </p>
             
-                <div 
+                <!-- <div 
                     class="primary-button px-[30px] py-[10px] whitespace-nowrap"
                     @click="addToCart()"
                 >
                     @lang('shop::app.components.products.card.add-to-cart')
-                </div> 
+                </div>  -->
             </div> 
         </div>
     </script>
@@ -259,7 +291,8 @@
                     }
                 },
 
-                getStorageValue(key) {
+                getStorageValue(key)
+                {
                     let value = localStorage.getItem('compare_items');
 
                     if (! value) {

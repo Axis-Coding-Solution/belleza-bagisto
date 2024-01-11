@@ -53,7 +53,7 @@
                         </div>
 
                         <!-- Cart Item Information -->
-                        <div class="grid flex-1 gap-y-[10px] place-content-start justify-stretch">
+                        <div class="grid flex-1 gap-y-[10px] place-content-start justify-stretch ">
                             <div class="flex flex-wrap justify-between">
                                 
                                 <p
@@ -110,7 +110,7 @@
                                 <x-shop::quantity-changer
                                     name="quantity"
                                     ::value="item?.quantity"
-                                    class="gap-x-[10px] max-w-[150px] max-h-[36px] py-[5px] px-[14px] rounded-[54px]"
+                                    class="gap-x-[10px] max-w-[150px] max-h-[36px] py-[5px] px-[14px] rounded-md"
                                     @change="updateItem($event, item)"
                                 >
                                 </x-shop::quantity-changer>
@@ -162,16 +162,16 @@
                     <div class="px-[25px]">
                         <a
                             href="{{ route('shop.checkout.onepage.index') }}"
-                            class="block w-full mx-auto m-0 ml-[0px] py-[15px] px-[43px] bg-navyBlue rounded-[18px] text-white text-base font-medium text-center cursor-pointer max-sm:px-[20px]"
+                            class="block w-full mx-auto m-0 ml-[0px] py-[15px] px-[43px] bg-[#A81D46]  text-white text-base font-medium text-center cursor-pointer max-sm:px-[20px]"
                         >
                             @lang('shop::app.checkout.cart.mini-cart.continue-to-checkout')
                         </a>
 
-                        <div class="block m-0 ml-[0px] py-[15px] text-base text-center font-medium cursor-pointer">
+                        <!-- <div class="block m-0 ml-[0px] py-[15px] text-base text-center font-medium cursor-pointer">
                             <a href="{{ route('shop.checkout.cart.index') }}">
                                 @lang('shop::app.checkout.cart.mini-cart.view-cart')
                             </a>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </x-slot:footer>

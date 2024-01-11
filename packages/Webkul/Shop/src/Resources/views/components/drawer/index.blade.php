@@ -93,7 +93,7 @@
                             <div class="flex-1 min-h-0 min-w-0 overflow-auto">
                                 <div class="flex flex-col h-full">
                                     <div class="grid gap-y-[10px] p-[25px] pb-[20px] max-sm:px-[15px]">
-                                        <!-- Content Slot -->
+                                       
                                         <slot name="header"></slot>
 
                                         <div class="absolute top-5 ltr:right-5 rtl:left-5">
@@ -105,10 +105,10 @@
                                         </div>
                                     </div>
 
-                                    <!-- Content Slot -->
+                                  
                                     <slot name="content"></slot>
 
-                                    <!-- Footer Slot -->
+                                 
                                     <slot name="footer"></slot>
                                 </div>
                             </div>
