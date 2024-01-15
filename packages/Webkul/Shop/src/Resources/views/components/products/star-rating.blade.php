@@ -15,7 +15,7 @@
 
 @pushOnce("scripts")
     <script type="text/x-template" id="v-star-rating-template">
-        <div class="flex">
+        <div class="flex gap-3">
             <span
                 class="icon-star-fill text-[24px] cursor-pointer"
                 v-for="rating in availableRatings"

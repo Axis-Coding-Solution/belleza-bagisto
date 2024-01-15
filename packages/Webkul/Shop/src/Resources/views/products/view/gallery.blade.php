@@ -4,9 +4,50 @@
 
 @pushOnce('scripts')
     <script type="text/x-template" id="v-product-gallery-template">
-        <div class="flex gap-[30px] h-max sticky top-[30px] max-1180:hidden">
+        <div class=" gap-[30px] h-max sticky top-[30px] max-1180:hidden">
+        <div
+                class="max-w-[560px] max-h-[548px] flex "
+                v-show="! isMediaLoading"
+            >
+           
+                <img 
+                    class="min-w-[450px] " 
+                    :src="baseFile.path" 
+                    v-if="baseFile.type == 'image'"
+                    alt="@lang('shop::app.products.view.gallery.product-image')"
+                    width="560"
+                    height="609"
+                    @load="onMediaLoad()"
+                />
+                @if (core()->getConfigData('general.content.shop.wishlist_option'))
+                                        <div
+                                            class="flex items-center justify-end min-w-[46px] min-h-[46px] max-h-[46px] bg-white   text-[24px] transition-all hover:opacity-[0.8] cursor-pointer"
+                                            :class="isWishlist ? 'icon-heart-fill text-[#A81D46]' : 'icon-heart '"
+                                            @click="addToWishlist"
+                                        >
+                                        </div>
+                                    @endif
+
+                <div
+                    class="min-w-[450px] rounded-[12px]"
+                    v-if="baseFile.type == 'video'"
+                >
+                    <video  
+                        controls                             
+                        width='475'
+                        @load="onMediaLoad()"
+                    >
+                        <source 
+                            :src="baseFile.path" 
+                            type="video/mp4"
+                        />
+                    </video>    
+                </div>
+                
+            </div>
             <!-- Product Image Slider -->
-            <div class="flex-24 place-content-start h-509 overflow-x-hidden overflow-y-auto flex gap-[30px] max-w-[100px] flex-wrap">
+            <div class="flex  gap-[10px] py-10 border-t-2 mt-4 items-center">
+                <h1><</h1>
                 <img 
                     :class="`min-w-[100px] max-h-[100px] rounded-[12px] ${ hover ? 'cursor-pointer' : '' }`" 
                     v-for="image in media.images"
@@ -16,6 +57,7 @@
                     height="100"
                     @mouseover="change(image)"
                 />
+                <h1>></h1>
 
                 <!-- Need to Set Play Button  -->
                 <video 
@@ -38,37 +80,7 @@
                 <div class="min-w-[560px] min-h-[607px] bg-[#E9E9E9] rounded-[12px] shimmer"></div>
             </div>
 
-            <div
-                class="max-w-[560px] max-h-[609px]"
-                v-show="! isMediaLoading"
-            >
-                <img 
-                    class="min-w-[450px] rounded-[12px]" 
-                    :src="baseFile.path" 
-                    v-if="baseFile.type == 'image'"
-                    alt="@lang('shop::app.products.view.gallery.product-image')"
-                    width="560"
-                    height="609"
-                    @load="onMediaLoad()"
-                />
-
-                <div
-                    class="min-w-[450px] rounded-[12px]"
-                    v-if="baseFile.type == 'video'"
-                >
-                    <video  
-                        controls                             
-                        width='475'
-                        @load="onMediaLoad()"
-                    >
-                        <source 
-                            :src="baseFile.path" 
-                            type="video/mp4"
-                        />
-                    </video>    
-                </div>
-                
-            </div>
+          
         </div>
 
         <!-- Product slider Image with shimmer -->
@@ -103,6 +115,11 @@
                     },
 
                     hover: false,
+                    isWishlist: Boolean("{{ (boolean) auth()->guard()->user()?->wishlist_items->where('channel_id', core()->getCurrentChannel()->id)->where('product_id', $product->id)->count() }}"),
+
+                    isCustomer: '{{ auth()->guard('customer')->check() }}',
+
+                    is_buy_now: 0,
                 }
             },
 
@@ -145,7 +162,23 @@
                     }
                     
                     this.hover = true;
-                }
+                },
+
+                addToWishlist() {
+                        if (this.isCustomer) {
+                            this.$axios.post('{{ route('shop.api.customers.account.wishlist.store') }}', {
+                                    product_id: "{{ $product->id }}"
+                                })
+                                .then(response => {
+                                    this.isWishlist = ! this.isWishlist;
+
+                                    this.$emitter.emit('add-flash', { type: 'success', message: response.data.data.message });
+                                })
+                                .catch(error => {});
+                        } else {
+                            window.location.href = "{{ route('shop.customer.session.index')}}";
+                        }
+                    },
             }
         })
     </script>

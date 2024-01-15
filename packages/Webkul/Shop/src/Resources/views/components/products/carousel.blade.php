@@ -1,3 +1,8 @@
+
+
+
+
+
 <v-products-carousel
     src="{{ $src }}"
     title="{{ $title }}"

@@ -8,7 +8,7 @@
     <script type="text/x-template" id="v-product-card-template">
         <!-- Grid Card -->
         <div
-            class='grid gap-2.5 content-start w-full relative'
+            class='grid gap-2.5 content-start w-full relative  h-[529px]'
             v-if="mode != 'list'"
         >
             <div class="relative overflow-hidden group  max-w-[217px] w-[217px] max-h-[308px] h-[308px] rounded-[4px]">
@@ -95,7 +95,7 @@
                 </div>
             </div>
 
-            <div class="grid gap-2.5 content-start max-w-[217px]">
+            <div class="grid gap-2.5 content-center max-w-[217px] ">
             <div class="">
                   
                   <p>VAGUE</p>

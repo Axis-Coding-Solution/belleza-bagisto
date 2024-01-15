@@ -132,7 +132,7 @@
 
                                     <!-- Text Swatch Options -->
                                     <label 
-                                        class="group relative flex items-center justify-center min-w-[60px] bg-white py-3 px-4 rounded-full border h-[60px] hover:bg-gray-50 focus:outline-none text-gray-900 font-medium uppercase shadow-sm max-sm:w-[35px] max-sm:h-[35px] sm:py-6 cursor-pointer"
+                                        class="group relative flex items-center justify-center min-w-[60px] bg-white py-3 px-4  border h-[32px] hover:bg-gray-50 focus:outline-none text-gray-900 font-medium uppercase shadow-sm max-sm:w-[35px] max-sm:h-[35px] sm:py-6 cursor-pointer"
                                         :class="{'ring-2 ring-navyBlue' : index == attribute.selectedIndex }"
                                         :title="option.label"
                                         v-if="attribute.swatch_type == 'text'"
@@ -155,6 +155,59 @@
                                                 class="sr-only peer"
                                                 @click="configure(attribute, $event.target.value)"
                                             />
+                                            <input
+                                                type="radio"
+                                                :name="'super_attribute[' + attribute.id + ']'"
+                                                :value="option.id"
+                                                v-bind="field"
+                                                :id="'attribute_' + attribute.id"
+                                                :aria-labelledby="'color-choice-' + index + '-label'"
+                                                class="sr-only peer"
+                                                @click="configure(attribute, $event.target.value)"
+                                            />
+                                        </v-field>
+
+                                        <span
+                                            class="text-[18px] max-sm:text-[14px]"
+                                            v-text="option.label"
+                                        ></span>
+
+                                        <span class="absolute -inset-px rounded-full pointer-events-none"></span>
+                                    </label>
+                                    <label 
+                                        class="group relative flex items-center justify-center min-w-[60px] bg-white py-3 px-4  border h-[32px] hover:bg-gray-50 focus:outline-none text-gray-900 font-medium uppercase shadow-sm max-sm:w-[35px] max-sm:h-[35px] sm:py-6 cursor-pointer"
+                                        :class="{'ring-2 ring-navyBlue' : index == attribute.selectedIndex }"
+                                        :title="option.label"
+                                        v-if="attribute.swatch_type == 'text'"
+                                    >
+                                        <v-field
+                                            type="radio"
+                                            :name="'super_attribute[' + attribute.id + ']'"
+                                            :value="option.id"
+                                            v-slot="{ field }"
+                                            rules="required"
+                                            :label="attribute.label"
+                                        >
+                                            <input
+                                                type="radio"
+                                                :name="'super_attribute[' + attribute.id + ']'"
+                                                :value="option.id"
+                                                v-bind="field"
+                                                :id="'attribute_' + attribute.id"
+                                                :aria-labelledby="'color-choice-' + index + '-label'"
+                                                class="sr-only peer"
+                                                @click="configure(attribute, $event.target.value)"
+                                            />
+                                            <input
+                                                type="radio"
+                                                :name="'super_attribute[' + attribute.id + ']'"
+                                                :value="option.id"
+                                                v-bind="field"
+                                                :id="'attribute_' + attribute.id"
+                                                :aria-labelledby="'color-choice-' + index + '-label'"
+                                                class="sr-only peer"
+                                                @click="configure(attribute, $event.target.value)"
+                                            />
                                         </v-field>
 
                                         <span
@@ -167,12 +220,12 @@
                                 </template>
                             </template>
 
-                            <span
+                            <!-- <span
                                 class="text-gray-600 text-sm max-sm:text-[12px]"
                                 v-if="! attribute.options.length"
                             >
                                 @lang('shop::app.products.view.type.configurable.select-above-options')
-                            </span>
+                            </span> -->
                         </div>
                     </template>
 

@@ -1,7 +1,7 @@
 @props([
     'isActive' => false,
     'position' => 'right',
-    'width'    => '500px',
+    'width'    => '381px',
 ])
 
 <v-drawer
@@ -78,7 +78,7 @@
                 :leave-to-class="enterFromLeaveToClasses"
             >
                 <div
-                    class="fixed z-[1000] bg-white overflow-hidden max-sm:!w-full"
+                    class="fixed z-[1000] bg-white overflow-hidden max-sm:!w-full w-[381px]"
                     :class="{
                         'inset-x-0 top-0': position == 'top',
                         'inset-x-0 bottom-0': position == 'bottom',
@@ -90,17 +90,18 @@
                 >
                     <div class="w-full h-full overflow-auto bg-white pointer-events-auto">
                         <div class="flex flex-col h-full w-full">
-                            <div class="flex-1 min-h-0 min-w-0 overflow-auto">
+                            <div class="flex-1 min-h-0 min-w-0 overflow-auto bg-[#F3F6F8]">
                                 <div class="flex flex-col h-full">
-                                    <div class="grid gap-y-[10px] p-[25px] pb-[20px] max-sm:px-[15px]">
+                                    <div class="grid gap-y-[10px]  pb-[20px] max-sm:px-[15px]">
                                        
                                         <slot name="header"></slot>
 
-                                        <div class="absolute top-5 ltr:right-5 rtl:left-5">
+                                        <div class="absolute top-5 ltr:right-5 rtl:left-5 transform rotate-45">
                                             <span
-                                                class="icon-cancel text-[30px] cursor-pointer"
+                                                class=" text-[30px] cursor-pointer "
                                                 @click="close"
                                             >
+                                            +
                                             </span>
                                         </div>
                                     </div>

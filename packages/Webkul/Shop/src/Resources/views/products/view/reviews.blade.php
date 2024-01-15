@@ -11,7 +11,7 @@
 @pushOnce('scripts')
     {{-- Product Review Template --}}
     <script type="text/x-template" id="v-product-review-template">
-        <div class="container max-1180:px-[20px]">
+        <div class=" ">
             <!-- Create Review Form Container -->
             <div 
                 class="w-full" 
@@ -170,28 +170,28 @@
                 <template v-else>
                     <!-- Review Section Header -->
                     <div class="flex gap-[15px] items-center justify-between  max-sm:flex-wrap">
-                        <h3 class="font-dmserif text-[30px] max-sm:text-[22px]">
+                        <!-- <h3 class="font-dmserif text-[30px] max-sm:text-[22px]">
                             @lang('shop::app.products.view.reviews.customer-review')
-                        </h3>
+                        </h3> -->
                         
                         @if (
                             core()->getConfigData('catalog.products.review.guest_review')
                             || auth()->guard('customer')->user()
                         )
-                            <div
+                            <!-- <div
                                 class="flex gap-x-[15px] items-center px-[15px] py-[10px] border border-navyBlue rounded-[12px] cursor-pointer"
                                 @click="canReview = true"
                             >
                                 <span class="icon-pen text-[24px]"></span>
 
                                 @lang('shop::app.products.view.reviews.write-a-review')
-                            </div>
+                            </div> -->
                         @endif
                     </div>
 
                     <template v-if="reviews.length">
-                        <!-- Average Rating Section -->
-                        <div class="flex gap-[15px] justify-between items-center max-w-[365px] mt-[30px] max-sm:flex-wrap">
+                     
+                        <!-- <div class="flex gap-[15px] justify-between items-center max-w-[365px] mt-[30px] max-sm:flex-wrap">
                             <p class="text-[30px] font-medium max-sm:text-[16px]">{{ number_format($avgRatings, 1) }}</p>
 
                             <x-shop::products.star-rating :value="$avgRatings"></x-shop::products.star-rating>
@@ -199,10 +199,10 @@
                             <p class="text-[12px] text-[#858585]">
                                 (@{{ meta.total }} @lang('shop::app.products.view.reviews.customer-review'))
                             </p>
-                        </div>
+                        </div> -->
 
-                        <!-- Ratings By Individual Stars -->
-                        <div class="flex gap-x-[20px] items-center">
+                 
+                        <!-- <div class="flex gap-x-[20px] items-center">
                             <div class="flex gap-y-[18px] flex-wrap max-w-[365px] mt-[10px]">
                                 @for ($i = 5; $i >= 1; $i--)
                                     <div class="flex gap-x-[25px] items-center max-sm:flex-wrap">
@@ -213,14 +213,64 @@
                                     </div>
                                 @endfor
                             </div>
-                        </div>
+                        </div> -->
 
-                        <div class="grid grid-cols-[1fr_1fr] gap-[20px] mt-[60px] max-1060:grid-cols-[1fr]">
-                            <!-- Product Review Item Vue Component -->
+                        <div class="flex flex-col sm:flex-row gap-[50px] lg:gap-[230px] md:mt-[60px] pb-3  border-none">
+                           
                             <v-product-review-item
                                 v-for='review in reviews'
                                 :review="review"
-                            ></v-product-review-item>
+                            ></v-product-review-item> 
+                            <v-product-review-item
+                                v-for='review in reviews'
+                                :review="review"
+                            ></v-product-review-item> 
+                        </div>
+                        <div class="flex flex-col gap-4 sm:mt-5 pt-3">
+                            <h1 class="text-[18px] leading-[27px]">Rating</h1>
+                            <svg width="112" height="16" viewBox="0 0 112 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1551_15192)">
+<path d="M7.9987 1.33398L10.0587 5.50732L14.6654 6.18065L11.332 9.42732L12.1187 14.014L7.9987 11.8473L3.8787 14.014L4.66536 9.42732L1.33203 6.18065L5.9387 5.50732L7.9987 1.33398Z" fill="#A6A6A6" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g clip-path="url(#clip1_1551_15192)">
+<path d="M31.9987 1.33398L34.0587 5.50732L38.6654 6.18065L35.332 9.42732L36.1187 14.014L31.9987 11.8473L27.8787 14.014L28.6654 9.42732L25.332 6.18065L29.9387 5.50732L31.9987 1.33398Z" fill="#A6A6A6" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g clip-path="url(#clip2_1551_15192)">
+<path d="M55.9987 1.33398L58.0587 5.50732L62.6654 6.18065L59.332 9.42732L60.1187 14.014L55.9987 11.8473L51.8787 14.014L52.6654 9.42732L49.332 6.18065L53.9387 5.50732L55.9987 1.33398Z" fill="#A6A6A6" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g clip-path="url(#clip3_1551_15192)">
+<path d="M79.9987 1.33398L82.0587 5.50732L86.6654 6.18065L83.332 9.42732L84.1187 14.014L79.9987 11.8473L75.8787 14.014L76.6654 9.42732L73.332 6.18065L77.9387 5.50732L79.9987 1.33398Z" fill="#A6A6A6" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<g clip-path="url(#clip4_1551_15192)">
+<path d="M103.999 1.33398L106.059 5.50732L110.665 6.18065L107.332 9.42732L108.119 14.014L103.999 11.8473L99.8787 14.014L100.665 9.42732L97.332 6.18065L101.939 5.50732L103.999 1.33398Z" fill="#A6A6A6" stroke="#A6A6A6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_1551_15192">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+<clipPath id="clip1_1551_15192">
+<rect width="16" height="16" fill="white" transform="translate(24)"/>
+</clipPath>
+<clipPath id="clip2_1551_15192">
+<rect width="16" height="16" fill="white" transform="translate(48)"/>
+</clipPath>
+<clipPath id="clip3_1551_15192">
+<rect width="16" height="16" fill="white" transform="translate(72)"/>
+</clipPath>
+<clipPath id="clip4_1551_15192">
+<rect width="16" height="16" fill="white" transform="translate(96)"/>
+</clipPath>
+</defs>
+</svg>
+<div class="flex flex-col gap-3 w-full sm:w-[70%]">
+    <label for="" class="text-[14px]">Your Name</label>
+    <input type="text " class="border h-[44px]">
+</div>
+<div class="flex flex-col gap-3 w-full sm:w-[70%]">
+    <label for="" class="text-[14px]">Your Review</label>
+    <textarea placeholder="Type your text here" class="border h-[110px]"></textarea>
+    
+</div>
                         </div>
 
                         <button
@@ -233,7 +283,7 @@
                     </template>
 
                     <template v-else>
-                        <!-- Empty Review Section -->
+                     
                         <div class="grid items-center justify-items-center w-[100%] m-auto h-[476px] place-content-center text-center">
                             <img class="" src="{{ bagisto_asset('images/review.png') }}" alt="" title="">
 
@@ -249,9 +299,9 @@
 
     {{-- Product Review Item Template --}}
     <script type="text/x-template" id="v-product-review-item-template">
-        <div class="flex gap-[20px] p-[25px] border border-[#e5e5e5] rounded-[12px] max-sm:flex-wrap max-xl:mb-[20px]">
+        <div class="flex justify-between w-full  rounded-[12px] max-sm:flex-wrap max-xl:mb-[20px]">
             <div>
-                <div
+                <!-- <div
                     class="flex justify-center items-center min-h-[100px] max-h-[100px] min-w-[100px] max-w-[100px] rounded-[12px] bg-[#F5F5F5] max-sm:hidden"
                     :title="review.name"
                 >
@@ -260,11 +310,11 @@
                         v-text="review.name.split(' ').map(name => name.charAt(0).toUpperCase()).join('')"
                     >
                     </span>
-                </div>
+                </div> -->
             </div>
 
             <div class="w-full">
-                <div class="flex justify-between">
+                <div class="">
                     <p
                         class="text-[20px] font-medium max-sm:text-[16px]"
                         v-text="review.name"
@@ -285,12 +335,13 @@
                     v-text="review.created_at"
                 >
                 </p>
+                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, necessitatibus molestias. Eaque at accusantium doloribus explicabo tempora modi id, quas corrupti obcaecati nemo animi odio amet sequi libero dolore possimus nam qui eum, sunt veritatis quo cupiditate delectus vero tenetur! Soluta veniam doloribus sunt repudiandae voluptatibus aspernatur unde praesentium consequuntur!</p>
 
-                <p
+                <!-- <p
                     class="mt-[20px] text-[16px] text-[#6E6E6E] font-semibold max-sm:text-[12px]"
                     v-text="review.title"
                 >
-                </p>
+                </p> -->
 
                 <p
                     class="mt-[20px] text-[16px] text-[#6E6E6E] max-sm:text-[12px]"
@@ -298,7 +349,7 @@
                 >
                 </p>
 
-                <div class="flex gap-2 flex-wrap mt-2">
+                <!-- <div class="flex gap-2 flex-wrap mt-2">
                     <template v-for="file in review.images">
                         <a
                             :href="file.url"
@@ -329,8 +380,9 @@
                             </video>
                         </a>
                     </template>
-                </div>
+                </div> -->
             </div>
+            
         </div>
     </script>
 

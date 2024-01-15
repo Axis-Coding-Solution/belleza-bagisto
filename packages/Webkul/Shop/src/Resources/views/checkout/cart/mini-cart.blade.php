@@ -1,6 +1,6 @@
 {{-- Mini Cart Vue Component --}}
 <v-mini-cart>
-    <span class="icon-cart text-[24px] cursor-pointer"></span>
+    <span class="icon-cart text-[24px] cursor-pointer bg-[#F3F6F8]"></span>
 </v-mini-cart>
 
 @pushOnce('scripts')
@@ -22,15 +22,16 @@
 
             <!-- Drawer Header -->
             <x-slot:header>
-                <div class="flex justify-between items-center">
-                    <p class="text-[26px] font-medium">
-                        @lang('shop::app.checkout.cart.mini-cart.shopping-cart')
+                <div class="flex justify-between items-center border-b border-black py-8 px-3">
+                    <p class="text-[16px] font-medium">
+                        <!-- @lang('shop::app.checkout.cart.mini-cart.shopping-cart') -->
+                        Review your cart
                     </p>
                 </div>
 
-                <p class="text-[16px]">
-                    @lang('shop::app.checkout.cart.mini-cart.offer-on-orders')
-                </p>
+                <p class="text-[14px] px-3">
+                    <!-- @lang('shop::app.checkout.cart.mini-cart.offer-on-orders') -->
+                    Congrats! you are qualified for free shipping 
             </x-slot:header>
 
             <!-- Drawer Content -->
@@ -48,16 +49,16 @@
                         <div class="">
                             <img
                                 :src="item.base_image.small_image_url"
-                                class="max-w-[110px] max-h-[110px] rounded-[12px]"
+                                class="max-w-[110px] max-h-[110px]"
                             />
                         </div>
 
                         <!-- Cart Item Information -->
                         <div class="grid flex-1 gap-y-[10px] place-content-start justify-stretch ">
-                            <div class="flex flex-wrap justify-between">
+                            <div class="flex flex-col">
                                 
                                 <p
-                                    class="text-[16px] font-medium max-w-[80%]"
+                                    class="text-[14px] font-bold max-w-[80%]"
                                     v-text="item.name"
                                 >
                                 </p>
@@ -110,7 +111,7 @@
                                 <x-shop::quantity-changer
                                     name="quantity"
                                     ::value="item?.quantity"
-                                    class="gap-x-[10px] max-w-[150px] max-h-[36px] py-[5px] px-[14px] rounded-md"
+                                    class="gap-x-[10px] max-w-[150px] max-h-[28px] py-[5px] px-[14px] border-[#DADADA] "
                                     @change="updateItem($event, item)"
                                 >
                                 </x-shop::quantity-changer>
@@ -146,13 +147,14 @@
             <!-- Drawer Footer -->
             <x-slot:footer>
                 <div v-if="cart?.items?.length">
-                    <div class="flex justify-between items-center mt-[60px] mb-[30px] px-[25px] pb-[8px] border-b-[1px] border-[#E9E9E9]">
+                    <div class="flex justify-between items-center mt-[60px]  px-[25px]  pb-4">
                         <p class="text-[14px] font-medium text-[#6E6E6E]">
-                            @lang('shop::app.checkout.cart.mini-cart.subtotal')
+                            <!-- @lang('shop::app.checkout.cart.mini-cart.subtotal') -->
+                            Today’s Total 
                         </p>
 
                         <p
-                            class="text-[30px] font-semibold"
+                            class="text-[14px] font-normal"
                             v-text="cart.formatted_grand_total"
                         >
                         </p>

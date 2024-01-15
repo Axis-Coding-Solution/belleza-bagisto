@@ -2,32 +2,41 @@
     'name'  => '',
     'value' => 1,
 ])
+<div class="flex flex-col sm:flex-row sm:items-center sm:gap-[100px] gap-4">
 
-<v-quantity-changer
-    {{ $attributes->merge(['class' => 'flex border border-navyBlue items-center']) }}
+<h1>Quantity:</h1>
+
+
+    <v-quantity-changer
+    {{ $attributes->merge(['class' => 'flex justify-center border  items-center h-[32px] rounded-none w-[147px] border-[#DADADA]']) }}
     name="{{ $name }}"
     value="{{ $value }}"
->
+    >
 </v-quantity-changer>
+
+</div>
 
 @pushOnce('scripts')
     <script type="text/x-template" id="v-quantity-changer-template">
+        
         <div>
             <span 
-                class="icon-minus text-[20px] cursor-pointer " 
+                class=" cursor-pointer h-[24px] " 
                 @click="decrease"
             >
+            -
             </span>
 
             <p
-                class="w-[10px] text-center select-none border py-[8px] px-5 border-[black]"
+                class="w-[30px] text-center  select-none flex justify-center items-center border-r border-l h-[32px] border-[#DADADA]"
                 v-text="quantity"
             ></p>
             
             <span 
-                class="icon-plus text-[20px] cursor-pointer"
+                class=" cursor-pointer h-[24px]"
                 @click="increase"
             >
+            +
             </span>
 
             <v-field

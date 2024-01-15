@@ -211,6 +211,7 @@
 
     .icon-minus:before {
         content: "\e92a";
+        font-size: 14px;
     }
 
     .icon-more:before {
@@ -227,6 +228,7 @@
 
     .icon-plus:before {
         content: "\e92e";
+        font-size: 14px
     }
 
     .icon-product:before {
@@ -267,8 +269,9 @@
     }
 
     .icon-star-fill:before {
-        content: "\e938";
+        content: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.00065 1.33398L10.0607 5.50732L14.6673 6.18065L11.334 9.42732L12.1207 14.014L8.00065 11.8473L3.88065 14.014L4.66732 9.42732L1.33398 6.18065L5.94065 5.50732L8.00065 1.33398Z' fill='%23A81D46' stroke='%23A81D46' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     }
+    
 
     .icon-star:before {
         content: "\e939";
