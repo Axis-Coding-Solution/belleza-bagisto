@@ -4,7 +4,7 @@
 ])
 <div class="flex flex-col sm:flex-row sm:items-center sm:gap-[100px] gap-4">
 
-<h1>Quantity:</h1>
+<h1 class="text-[18px] text-[#191919] font-medium">Quantity:</h1>
 
 
     <v-quantity-changer
@@ -21,19 +21,19 @@
         
         <div>
             <span 
-                class=" cursor-pointer h-[24px] " 
+                class=" cursor-pointer h-[24px] font-bold text-[18px] " 
                 @click="decrease"
             >
             -
             </span>
 
             <p
-                class="w-[30px] text-center  select-none flex justify-center items-center border-r border-l h-[32px] border-[#DADADA]"
+                class="w-[55px] text-center font-medium text-[18px]  select-none flex justify-center items-center border-r border-l h-[32px] border-[#DADADA]"
                 v-text="quantity"
             ></p>
             
             <span 
-                class=" cursor-pointer h-[24px]"
+                class=" cursor-pointer h-[24px] font-bold text-[18px]"
                 @click="increase"
             >
             +

@@ -11,6 +11,14 @@
 @pushOnce('scripts')
     {{-- Product Review Template --}}
     <script type="text/x-template" id="v-product-review-template">
+    <div class="flex flex-col xl:flex-row  xl:gap-[230px]  pb-3  border-none">
+                           
+                           <v-product-review-item
+                               v-for='review in reviews'
+                               :review="review"
+                           ></v-product-review-item> 
+                         
+                       </div>
         <div class=" ">
             <!-- Create Review Form Container -->
             <div 
@@ -23,7 +31,7 @@
                 >
                     <!-- Review Form -->
                     <form
-                        class="grid grid-cols-[auto_1fr] gap-[40px] justify-center max-md:grid-cols-[1fr]"
+                        class="xl:w-[752px]"
                         @submit="handleSubmit($event, store)"
                         enctype="multipart/form-data"
                     >
@@ -107,6 +115,7 @@
                                     rules="required"
                                     :label="trans('shop::app.products.view.reviews.title')"
                                     :placeholder="trans('shop::app.products.view.reviews.title')"
+                                    class="h-[44px]"
                                 >
                                 </x-shop::form.control-group.control>
 
@@ -129,6 +138,7 @@
                                     rules="required"
                                     :label="trans('shop::app.products.view.reviews.comment')"
                                     :placeholder="trans('shop::app.products.view.reviews.comment')"
+                                    class="h-[110px]"
                                 >
                                 </x-shop::form.control-group.control>
 
@@ -139,21 +149,21 @@
                             </x-shop::form.control-group>
 
 
-                            <div class="flex gap-[15px] justify-start max-sm:flex-wrap mt-4 max-sm:justify-center max-sm:mb-[20px] max-xl:mb-[20px]">
+                            <div class="flex justify-end mb-10">
                                 <button
-                                    class="primary-button w-full max-w-[374px] py-[16px] px-[43px] rounded-[18px] text-center"
+                                    class="primary-button  w-[210px] py-0  rounded-none border-black text-black bg-[#FCE4DE] text-center h-[44px]"
                                     type='submit'
                                 >
                                     @lang('shop::app.products.view.reviews.submit-review')
                                 </button>
                                 
-                                <button
+                                <!-- <button
                                     type="button"
                                     class="secondary-button items-center px-[30px] py-[10px] rounded-[18px] max-sm:w-full max-sm:max-w-[374px]"
                                     @click="canReview = false"
                                 >
                                     @lang('shop::app.products.view.reviews.cancel')
-                                </button>
+                                </button> -->
                             </div>
                         </div>
                     </form>
@@ -178,14 +188,14 @@
                             core()->getConfigData('catalog.products.review.guest_review')
                             || auth()->guard('customer')->user()
                         )
-                            <!-- <div
+                            <div
                                 class="flex gap-x-[15px] items-center px-[15px] py-[10px] border border-navyBlue rounded-[12px] cursor-pointer"
                                 @click="canReview = true"
                             >
                                 <span class="icon-pen text-[24px]"></span>
 
                                 @lang('shop::app.products.view.reviews.write-a-review')
-                            </div> -->
+                            </div>
                         @endif
                     </div>
 
@@ -215,18 +225,15 @@
                             </div>
                         </div> -->
 
-                        <div class="flex flex-col sm:flex-row gap-[50px] lg:gap-[230px] md:mt-[60px] pb-3  border-none">
+                        <!-- <div class="flex flex-col sm:flex-row gap-[50px] lg:gap-[230px] md:mt-[60px] pb-3  border-none">
                            
                             <v-product-review-item
                                 v-for='review in reviews'
                                 :review="review"
                             ></v-product-review-item> 
-                            <v-product-review-item
-                                v-for='review in reviews'
-                                :review="review"
-                            ></v-product-review-item> 
-                        </div>
-                        <div class="flex flex-col gap-4 sm:mt-5 pt-3">
+                          
+                        </div> -->
+                        <!-- <div class="flex flex-col gap-4 sm:mt-5 pt-3">
                             <h1 class="text-[18px] leading-[27px]">Rating</h1>
                             <svg width="112" height="16" viewBox="0 0 112 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1551_15192)">
@@ -270,7 +277,7 @@
     <label for="" class="text-[14px]">Your Review</label>
     <textarea placeholder="Type your text here" class="border h-[110px]"></textarea>
     
-</div>
+</div> -->
                         </div>
 
                         <button
@@ -283,14 +290,14 @@
                     </template>
 
                     <template v-else>
-                     
-                        <div class="grid items-center justify-items-center w-[100%] m-auto h-[476px] place-content-center text-center">
+                      <!-- empty review div removed -->
+                        <!-- <div class="grid items-center justify-items-center w-[100%] m-auto h-[476px] place-content-center text-center">
                             <img class="" src="{{ bagisto_asset('images/review.png') }}" alt="" title="">
 
                             <p class="text-[20px]">
                                 @lang('shop::app.products.view.reviews.empty-review')
                             </p>
-                        </div>
+                        </div> -->
                     </template>
                 </template>
             </div>
@@ -320,21 +327,22 @@
                         v-text="review.name"
                     >
                     </p>
+                    <p
+                    class=" text-[14px] font-medium max-sm:text-[12px] w-[375px]"
+                    v-text="review.created_at"
+                >
+                </p>
+                   
+                </div>
 
-                    <div class="flex items-center">
+                
+                <div class="flex items-center mb-[10px]">
                         <x-shop::products.star-rating 
                             ::name="review.name" 
                             ::value="review.rating"
                         >
                         </x-shop::products.star-rating>
                     </div>
-                </div>
-
-                <p
-                    class="mt-[10px] text-[14px] font-medium max-sm:text-[12px]"
-                    v-text="review.created_at"
-                >
-                </p>
                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, necessitatibus molestias. Eaque at accusantium doloribus explicabo tempora modi id, quas corrupti obcaecati nemo animi odio amet sequi libero dolore possimus nam qui eum, sunt veritatis quo cupiditate delectus vero tenetur! Soluta veniam doloribus sunt repudiandae voluptatibus aspernatur unde praesentium consequuntur!</p>
 
                 <!-- <p
@@ -349,8 +357,8 @@
                 >
                 </p>
 
-                <!-- <div class="flex gap-2 flex-wrap mt-2">
-                    <template v-for="file in review.images">
+                <div class="flex gap-2 flex-wrap mt-2">
+                    <!-- <template v-for="file in review.images">
                         <a
                             :href="file.url"
                             class="h-12 w-12 flex"
@@ -379,8 +387,8 @@
                             >
                             </video>
                         </a>
-                    </template>
-                </div> -->
+                    </template> -->
+                </div>
             </div>
             
         </div>
@@ -396,7 +404,7 @@
                 return {
                     isLoading: true,
 
-                    canReview: false,
+                    canReview: true,
 
                     reviews: [],
 

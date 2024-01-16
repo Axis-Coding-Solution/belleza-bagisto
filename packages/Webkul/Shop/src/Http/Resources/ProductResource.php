@@ -30,7 +30,6 @@ class ProductResource extends JsonResource
     public function toArray($request)
     {
         $productTypeInstance = $this->getTypeInstance();
-
         return [
             'id'          => $this->id,
             'sku'         => $this->sku,

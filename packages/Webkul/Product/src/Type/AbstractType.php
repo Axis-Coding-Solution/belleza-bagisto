@@ -802,6 +802,7 @@ abstract class AbstractType
         return view('shop::products.prices.index', [
             'product' => $this->product,
             'prices'  => $this->getProductPrices(),
+            'actual_price' => $this->getProductPrices() ? $this->getProductPrices()['regular']  : null,
         ])->render();
     }
 

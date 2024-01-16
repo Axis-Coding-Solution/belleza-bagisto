@@ -146,7 +146,7 @@
     </div>
 
     {{-- Information Section --}}
-    <div class="sm:container sm:mt-[40px] max-1180:px-[20px] max-sm:px-10 1180:hidden">
+    <div class="xl:container xl:mt-[40px] xl-[px-20]   1180:hidden">
         {{-- Description Accordion --}}
         <x-shop::accordion :is-active="true">
             <x-slot:header>
@@ -269,13 +269,13 @@
                         :value="qty"
                     >
 
-                    <div class="container px-[60px] max-1180:px-[0px] border-t">
+                    <div class="  max-1180:px-[0px] border-t">
                         <div class="flex gap-[40px] mt-[48px] max-1180:flex-wrap max-lg:mt-0 max-sm:gap-y-[25px]">
                             <!-- Gallery Blade Inclusion -->
                             @include('shop::products.view.gallery')
 
                             <!-- Details -->
-                            <div class="max-w-[590px] relative max-1180:w-full max-1180:max-w-full max-1180:px-[20px]">
+                            <div class="max-w-[590px] relative max-1180:w-full max-1180:max-w-full xl:px-[20px]">
                                 <h1 class="text-[#A81D46]">DERMA doctor</h1>
                                 {!! view_render_event('bagisto.shop.products.name.before', ['product' => $product]) !!}
 
@@ -358,18 +358,7 @@
                                 <!-- Pricing -->
                                 {!! view_render_event('bagisto.shop.products.price.before', ['product' => $product]) !!}
 
-                                <!-- <p class="flex gap-2.5 items-center mt-[25px] text-[24px] !font-medium max-sm:mt-[15px] max-sm:text-[18px]">
-                                    {!! $product->getTypeInstance()->getPriceHtml() !!}
-
-                                    <span class="text-[18px] text-[#6E6E6E]">
-                                        @if (
-                                            (bool) core()->getConfigData('taxes.catalogue.pricing.tax_inclusive') 
-                                            && $product->getTypeInstance()->getTaxCategory()
-                                        )
-                                            @lang('shop::app.products.view.tax-inclusive')
-                                        @endif
-                                    </span>
-                                </p> -->
+                               
 
                                 {!! view_render_event('bagisto.shop.products.price.after', ['product' => $product]) !!}
 
@@ -391,9 +380,22 @@
 
                               <div> 
                                 <h1 class="pt-5 text-[10px] sm:text-[14px]">Same day delivery if you place order before 6 PM!</h1>
-                                <div class="flex gap-6 pt-4">
-                                    <h1 class="text-black text-[24px] font-bold">19 BD</h1>
-                                    <h1 class="text-[#D9D9D9] text-[24px] ">36 BD</h1>
+                                <div class="flex items-center gap-6 pt-4">
+                                {!! view_render_event('bagisto.shop.products.price.before', ['product' => $product]) !!}
+
+                                    <h1 class="text-black text-[24px] font-bold"> <p class="flex items-center  text-[24px] !font-medium max-sm:mt-[15px] max-sm:text-[18px]">
+                                    {!! $product->getTypeInstance()->getPriceHtml() !!}
+
+                                    <span class="text-[18px] text-[#6E6E6E]">
+                                        @if (
+                                            (bool) core()->getConfigData('taxes.catalogue.pricing.tax_inclusive') 
+                                            && $product->getTypeInstance()->getTaxCategory()
+                                        )
+                                            @lang('shop::app.products.view.tax-inclusive')
+                                        @endif
+                                    </span>
+                                </p></h1>
+                                    
                                 </div>
                                 <h1 class="text-[9px] text-[#A81D46]">VAT Included</h1>
                               </div>
@@ -419,14 +421,14 @@
 
 <button
     type="submit"
-    class=" w-[233px] sm:h-[65px] h-[30px] px-5 sm:px-0 border bg-[#A81D46] border-black text-white text-[8px] sm:text-[20px] "
+    class=" xl:w-[233px] w-[150px] xl:h-[65px] lg:h-[55px] h-[30px] md:h-[45px]  px-5 sm:px-0 border bg-[#A81D46] border-black text-white text-[8px] sm:text-[14px] xl:text-[20px] "
     {{ ! $product->isSaleable(1) ? 'disabled' : '' }}
 >
     @lang('shop::app.products.view.add-to-cart')
 </button>
 
 {!! view_render_event('bagisto.shop.products.view.add_to_cart.after', ['product' => $product]) !!}
-<button class="border w-[233px] sm:h-[65px] h-[30px] px-5 sm:px-0 border-black bg-[#FCE4DE] text-[8px] sm:text-[20px]" >Buy Now</button>
+<button class="border xl:w-[233px] w-[150px] xl:h-[65px] lg:h-[55px] h-[30px] md:h-[45px] px-5 sm:px-0 border-black bg-[#FCE4DE] text-[8px] sm:text-[14px] xl:text-[20px]" >Buy Now</button>
                                     </div>
                                    
                                    

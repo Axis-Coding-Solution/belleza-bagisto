@@ -534,6 +534,8 @@ class Configurable extends AbstractType
      */
     public function getPriceHtml()
     {
+        
+        $price =  $this->product->getTypeInstance()->getFinalPrice();
         return view('shop::products.prices.configurable', [
             'product' => $this->product,
             'prices'  => $this->getProductPrices(),

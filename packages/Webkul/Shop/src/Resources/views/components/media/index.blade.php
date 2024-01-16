@@ -33,7 +33,7 @@
                         </div>
                     </div>
                 </div>
-
+<!-- 
                 <label 
                     for="file-input"
                     class="flex flex-col items-center justify-center w-[284px] h-[284px] bg-[#F5F5F5] rounded-[12px] hover:bg-gray-100 cursor-pointer"
@@ -62,7 +62,7 @@
                         @change="onFileChange"
                     >
                     </v-field>
-                </label>
+                </label> -->
             </div>
 
             <div 

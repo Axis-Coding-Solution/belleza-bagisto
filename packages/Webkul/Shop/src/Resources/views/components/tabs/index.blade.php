@@ -16,7 +16,7 @@
             >
                 <div
                     v-for="tab in tabs"
-                    class="pb-[18px] px-[30px] text-[20px] font-medium text-[#6E6E6E] cursor-pointer"
+                    class="pb-[18px]  text-[20px] font-medium text-[#6E6E6E] cursor-pointer"
                     :class="{'text-[#A81D46] border-[#A81D46] border-b-[2px] transition': tab.isActive }"
                     v-text="tab.title"
                     @click="change(tab)"

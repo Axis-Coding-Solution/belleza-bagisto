@@ -57,7 +57,7 @@
                 
                                                         <div class="flex gap-[10px] items-center">
                                                             @for ($i = 1; $i <= 5; $i++)
-                                                                <span class="icon-star-fill text-[24px] {{ $review->rating >= $i ? 'text-[#ffb600]' : 'text-[#6E6E6E]' }}"></span>
+                                                                <span class="icon-star-fill text-[24px] {{ $review->rating >= $i ? 'text-[#A81D46]' : 'text-[#6E6E6E]' }}"></span>
                                                             @endfor
                                                         </div>
                                                     </div>

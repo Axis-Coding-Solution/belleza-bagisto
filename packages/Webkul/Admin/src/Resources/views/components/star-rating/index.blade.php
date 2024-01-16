@@ -19,14 +19,14 @@
                 class="icon-star-fill text-[24px] cursor-pointer"
                 v-for="rating in availableRatings"
                 v-if="! disabled"
-                :style="[`color: ${appliedRatings >= rating ? '#ffb600' : '#7d7d7d'}`]"
+                :style="[`color: ${appliedRatings >= rating ? '#A81D46' : '#7d7d7d'}`]"
                 @click="change(rating)"
             ></span>
 
             <span
                 class="icon-star text-[18px]"
                 v-for="rating in availableRatings"
-                :style="[`color: ${appliedRatings >= rating ? '#ffb600' : '#7d7d7d'}`]"
+                :style="[`color: ${appliedRatings >= rating ? '#A81D46' : '#7d7d7d'}`]"
                 v-else
             ></span>
 
